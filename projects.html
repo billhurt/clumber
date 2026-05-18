@@ -228,6 +228,36 @@
       const btn = document.querySelector(`.filter-btn[data-filter="${target}"]`);
       if (btn) btn.click();
     }
+
+    // Lightbox
+    const lightbox = document.createElement('div');
+    lightbox.id = 'lightbox';
+    lightbox.innerHTML = '<button id="lightbox-close" aria-label="Close image">&times;</button><img alt="" />';
+    document.body.appendChild(lightbox);
+
+    const lbImg   = lightbox.querySelector('img');
+    const lbClose = lightbox.querySelector('#lightbox-close');
+
+    function openLightbox(src, alt) {
+      lbImg.src = src;
+      lbImg.alt = alt;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+      lbImg.src = '';
+    }
+
+    document.querySelectorAll('.project-gallery img').forEach(img => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', () => openLightbox(img.src, img.alt));
+    });
+
+    lbClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
   </script>
 </body>
 </html>
