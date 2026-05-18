@@ -59,7 +59,7 @@
       <!-- Grid -->
       <div class="projects-grid" id="projectsGrid">
 
-        <article class="project-card" data-category="infrastructure">
+        <article class="project-card" data-category="infrastructure drainage">
           <div class="project-card-image">
             <img src="images/kilburn-marehay-rising-main-precast-manhole-installation.webp"
                  alt="Workers lowering precast concrete manhole into sheeted excavation on Kilburn to Marehay rising main project, Derbyshire"
@@ -84,7 +84,7 @@
           </div>
         </article>
 
-        <article class="project-card" data-category="infrastructure">
+        <article class="project-card" data-category="infrastructure drainage">
           <div class="project-card-image">
             <img src="images/nuneaton-sewage-rising-main-deep-excavation-line-stop-pit.webp"
                  alt="Deep sheeted excavation with concrete pump and Clumber excavator during Nuneaton sewage rising main installation, Warwickshire"
@@ -110,7 +110,7 @@
           </div>
         </article>
 
-        <article class="project-card" data-category="infrastructure">
+        <article class="project-card" data-category="infrastructure drainage">
           <div class="project-card-image">
             <img src="images/packington-final-effluent-rising-main-field-trench-excavation.webp"
                  alt="Clumber Construction excavator and bulldozer trenching through farmland on Packington Final Effluent Rising Main, Leicestershire"
@@ -196,7 +196,7 @@
     function applyFilter(filter) {
       let visibleCount = 0;
       cards.forEach(card => {
-        const match = (filter === 'all' || card.dataset.category === filter);
+        const match = (filter === 'all' || card.dataset.category.split(' ').includes(filter));
         card.hidden = !match;
         if (match) visibleCount++;
       });
