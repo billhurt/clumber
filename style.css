@@ -543,6 +543,12 @@
      flex: 1;
    }
    
+   .project-tags {
+     display: flex;
+     gap: .4rem;
+     flex-wrap: wrap;
+   }
+
    .project-tag {
      display: inline-block;
      align-self: flex-start;

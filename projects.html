@@ -140,7 +140,10 @@
             <img src="images/kilburn-marehay-rising-main-hdd-drive-pit.webp" alt="HDD drive pit construction, Kilburn to Marehay rising main" loading="lazy" />
           </div>
           <div class="project-card-content">
-            <span class="project-tag">Infrastructure</span>
+            <div class="project-tags">
+              <span class="project-tag" data-filter="infrastructure">Infrastructure</span>
+              <span class="project-tag" data-filter="drainage">Drainage</span>
+            </div>
             <h3>Kilburn to Marehay Rising Main</h3>
             <dl class="project-meta">
               <div><dt>Location</dt><dd>Derbyshire</dd></div>
@@ -166,7 +169,10 @@
             <img src="images/nuneaton-sewage-treatment-works-block-paving-close-up.webp" alt="Block paving grass reinforcement grid close-up, Nuneaton STW" loading="lazy" />
           </div>
           <div class="project-card-content">
-            <span class="project-tag">Infrastructure</span>
+            <div class="project-tags">
+              <span class="project-tag" data-filter="infrastructure">Infrastructure</span>
+              <span class="project-tag" data-filter="drainage">Drainage</span>
+            </div>
             <h3>Nuneaton Sewage Rising Mains</h3>
             <dl class="project-meta">
               <div><dt>Location</dt><dd>Nuneaton, Warwickshire</dd></div>
@@ -190,7 +196,10 @@
             <img src="images/packington-final-effluent-rising-main-800mm-pipe-joint-fitting.webp" alt="Worker fitting joint on 800mm ductile iron rising main pipe, Packington" loading="lazy" />
           </div>
           <div class="project-card-content">
-            <span class="project-tag">Infrastructure</span>
+            <div class="project-tags">
+              <span class="project-tag" data-filter="infrastructure">Infrastructure</span>
+              <span class="project-tag" data-filter="drainage">Drainage</span>
+            </div>
             <h3>Packington Final Effluent Rising Main</h3>
             <dl class="project-meta">
               <div><dt>Location</dt><dd>Packington, Leicestershire</dd></div>
@@ -290,6 +299,16 @@
       });
     });
 
+    // Clicking a category tag on a card triggers the matching filter
+    document.querySelectorAll('.project-tag[data-filter]').forEach(tag => {
+      tag.style.cursor = 'pointer';
+      tag.addEventListener('click', e => {
+        e.stopPropagation();
+        const btn = document.querySelector(`.filter-btn[data-filter="${tag.dataset.filter}"]`);
+        if (btn) btn.click();
+      });
+    });
+
     // Honour URL hash on load (so projects.html#drainage from the footer works)
     if (location.hash) {
       const target = location.hash.slice(1);
@@ -321,7 +340,7 @@
       lbIndex = ((idx % lbImages.length) + lbImages.length) % lbImages.length;
       lbImg.src = lbImages[lbIndex].src;
       lbImg.alt = lbImages[lbIndex].alt;
-      lbCounter.textContent = lbImages.length > 1 ? (lbIndex + 1) + ' \u2f ' + lbImages.length : '';
+      lbCounter.textContent = lbImages.length > 1 ? (lbIndex + 1) + ' / ' + lbImages.length : '';
       lbPrev.hidden = lbImages.length < 2;
       lbNext.hidden = lbImages.length < 2;
     }
