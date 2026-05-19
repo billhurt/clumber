@@ -3,6 +3,13 @@
 [build]
   publish = "."
 
+# Force www — matches canonical URLs
+[[redirects]]
+  from = "https://clumberconstruction.co.uk/*"
+  to   = "https://www.clumberconstruction.co.uk/:splat"
+  status = 301
+  force = true
+
 # Redirect after form submission
 [[redirects]]
   from = "/contact.html"
@@ -35,3 +42,18 @@
   for = "*.css"
   [headers.values]
     Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.ico"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
