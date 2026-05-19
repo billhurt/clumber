@@ -314,12 +314,17 @@
       });
     });
 
-    // Honour URL hash on load (so projects.html#drainage from the footer works)
-    if (location.hash) {
-      const target = location.hash.slice(1);
-      const btn = document.querySelector(`.filter-btn[data-filter="${target}"]`);
-      if (btn) btn.click();
+    // Honour URL hash — on initial load and when footer links change the hash
+    // while already on this page (hashchange fires; replaceState in filter does not)
+    function applyHashFilter() {
+      if (location.hash) {
+        const target = location.hash.slice(1);
+        const btn = document.querySelector(`.filter-btn[data-filter="${target}"]`);
+        if (btn) btn.click();
+      }
     }
+    applyHashFilter();
+    window.addEventListener('hashchange', applyHashFilter);
 
     // Lightbox carousel
     const lightbox = document.createElement('div');
