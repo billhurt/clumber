@@ -864,7 +864,7 @@
    }
    .footer-grid {
      display: grid;
-     grid-template-columns: 1.5fr 1fr 1fr;
+     grid-template-columns: 1fr auto;
      gap: 2.5rem;
      margin-bottom: 2.5rem;
    }
@@ -1030,7 +1030,6 @@
      .about-grid { grid-template-columns: 1fr; }
      .about-image-block { order: -1; }
      .about-badge { display: none; }
-     .footer-grid { grid-template-columns: 1fr 1fr; }
      .footer-brand { grid-column: 1 / -1; }
      .form-row { grid-template-columns: 1fr; }
      .footer-bottom {
