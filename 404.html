@@ -15,6 +15,7 @@
   <meta name="theme-color" content="#27336f" />
 
   <link rel="stylesheet" href="style.css" />
+  <script src="cookie.js"></script>
 
   <style>
     .error-section {
@@ -114,6 +115,15 @@
       </div>
     </div>
   </footer>
+
+  <!-- COOKIE BANNER -->
+  <div id="cookieBanner" class="cookie-banner" role="dialog" aria-label="Cookie consent" aria-live="polite">
+    <p>We use cookies to analyse site traffic and improve your experience. You can accept or decline below. <a href="contact.html">Privacy enquiries</a>.</p>
+    <div class="cookie-btns">
+      <button id="cookieAccept" class="btn btn--primary">Accept</button>
+      <button id="cookieDecline" class="cookie-decline">Decline</button>
+    </div>
+  </div>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
