@@ -216,6 +216,34 @@
           </div>
         </article>
 
+        <article class="project-card" data-category="infrastructure highways">
+          <div class="project-card-image">
+            <div class="yt-facade" data-video-id="A8pvWwlB6Qo" role="button" tabindex="0" aria-label="Play project video — Derbyshire Waste Treatment Centre">
+              <img src="https://img.youtube.com/vi/A8pvWwlB6Qo/maxresdefault.jpg"
+                   alt="Derbyshire Waste Treatment Centre reception pit — temporary works installation time lapse"
+                   loading="lazy"
+                   onerror="this.src='https://img.youtube.com/vi/A8pvWwlB6Qo/hqdefault.jpg'" />
+              <button class="yt-play" tabindex="-1" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="project-card-content">
+            <div class="project-tags">
+              <span class="project-tag" data-filter="infrastructure">Infrastructure</span>
+              <span class="project-tag" data-filter="highways">Highways &amp; Earthworks</span>
+            </div>
+            <h3>Derbyshire Waste Treatment Centre</h3>
+            <dl class="project-meta">
+              <div><dt>Location</dt><dd>Derbyshire</dd></div>
+              <div><dt>Works</dt><dd>Temporary works &amp; earthworks</dd></div>
+              <div><dt>Support Frames</dt><dd>5 nr systems</dd></div>
+              <div><dt>Structure</dt><dd>Cofferdam excavation</dd></div>
+            </dl>
+            <p class="project-scope">Full temporary works package for the reception pit — five support frames and cross members installed within the cofferdam excavation — plus all enabling earthworks to allow construction of the new waste treatment facility.</p>
+          </div>
+        </article>
+
       </div>
 
       <!-- Empty state for filters with no matches -->
@@ -316,6 +344,26 @@
     }
     applyHashFilter();
     window.addEventListener('hashchange', applyHashFilter);
+
+    // YouTube facade — swap thumbnail for iframe on click
+    document.querySelectorAll('.yt-facade').forEach(facade => {
+      function activateFacade() {
+        const id = facade.dataset.videoId;
+        const title = facade.getAttribute('aria-label') || 'Project video';
+        const iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+        iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+        iframe.allowFullscreen = true;
+        iframe.title = title;
+        facade.innerHTML = '';
+        facade.appendChild(iframe);
+        facade.style.cursor = 'default';
+      }
+      facade.addEventListener('click', activateFacade);
+      facade.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activateFacade(); }
+      });
+    });
 
     // Lightbox carousel
     const lightbox = document.createElement('div');
