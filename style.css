@@ -436,7 +436,7 @@
    .accreditation-logo {
      /* Placeholder block — swap for an <img> when real badges arrive */
      width: 100%;
-     max-width: 120px;
+     max-width: 150px;
      aspect-ratio: 16 / 9;
      display: flex;
      align-items: center;
@@ -457,6 +457,9 @@
      object-fit: contain;
      height: auto;
      padding: .25rem;
+   }
+   .accreditation-item img.accreditation-logo--lg {
+     max-width: 175px;
    }
    .accreditation-name {
      font-family: 'Barlow Condensed', sans-serif;
