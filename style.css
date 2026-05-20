@@ -993,10 +993,9 @@
      transform: translate(-50%, -50%) scale(1.1);
    }
    .yt-play svg {
-     width: 26px;
-     height: 26px;
+     width: 28px;
+     height: 28px;
      fill: #fff;
-     margin-left: 4px;
    }
    .yt-facade iframe {
      position: absolute;
