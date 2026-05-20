@@ -414,7 +414,7 @@
       const galleryImgs = Array.from(card.querySelectorAll('.project-gallery img'));
       const allImgs     = [mainImg, ...galleryImgs].filter(Boolean);
 
-      if (mainImg) {
+      if (mainImg && !mainImg.closest('.yt-facade')) {
         mainImg.style.cursor = 'zoom-in';
         mainImg.addEventListener('click', () => openLightbox(allImgs, 0));
       }
