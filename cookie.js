@@ -24,7 +24,11 @@
 
     // First visit — slide banner up after a short delay
     if (!consent && banner) {
-      setTimeout(function () { banner.classList.add('visible'); }, 600);
+      setTimeout(function () {
+        banner.hidden = false;
+        banner.offsetHeight; // force reflow so transition fires
+        banner.classList.add('visible');
+      }, 600);
     }
 
     var acceptBtn  = document.getElementById('cookieAccept');
